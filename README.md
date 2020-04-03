@@ -1,11 +1,9 @@
-Intacct Customer List Module
+Intacct Product List Module
 =============================
 
 Module utilized with [Intacct PHP SDK](https://developer.intacct.com/tools/sdk-php/).
 
-### Help Wanted
-
-Feel Free to add Additional Filters to this module.  At this point there are a very limited number of filters because this Module utilizes the new ["Query" syntax](https://developer.intacct.com/web-services/queries/#advantages-of-query).
+Also see [Common Filters](https://github.com/philbirnie/Intacct_Common) for available filters.
 
 ### Example Usage:
 
@@ -15,16 +13,16 @@ Feel Free to add Additional Filters to this module.  At this point there are a v
 
     $client = new OnlineClient($clientConfig);
 
-    /** @var CustomerList $accountsReceivableRequest **/
-    $customerListRequest = new CustomerList();
-    $customerListRequest->setFields(['CUSTOMERID', 'NAME']);
+    /** @var ProductList $itemListRequest **/
+    $itemListRequest = new ProductList();
+    $itemListRequest->setFields(['ITEMID', 'NAME']);
 
     $filter = new InFilter();
-    $filter->setField('CUSTOMERID');
+    $filter->setField('ITEMID');
     $filter->addValue('123456');
     $filter->addValue('789012');
 
-    $customerListRequest->addFilter($filter);
+    $itemListRequest->addFilter($filter);
 
-    $response = $client->execute($customerListRequest);
+    $response = $client->execute($itemListRequest);
 ```
